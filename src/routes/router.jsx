@@ -2,13 +2,29 @@ import { createBrowserRouter } from 'react-router';
 import LoginPage from '../pages/LoginPage';
 import RegisterPage from '../pages/RegisterPage';
 import MainLayout from '../components/layout/MainLayout';
+import AuthLayout from '../components/layout/AuthLayout';
+import TodoPage from '../pages/TodoPage';
+import CreateTodoPage from '../pages/CreateTodoPage';
+import EditTodoPage from '../pages/EditTodoPage';
 
 export const router = createBrowserRouter([
   {
     element: <MainLayout />,
     children: [
       { path: '/login', element: <LoginPage /> },
-      { path: '/register', element: <RegisterPage /> }
+      { path: '/register', element: <RegisterPage /> },
+      {
+        path: '/',
+        element: <AuthLayout />,
+        children: [
+          { index: true, element: <TodoPage /> },
+          { path: '/todo/create', element: <CreateTodoPage /> },
+          {
+            path: '/todo/:id/edit',
+            element: <EditTodoPage />
+          }
+        ]
+      }
     ]
   }
 ]);
