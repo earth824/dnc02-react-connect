@@ -14,6 +14,10 @@ export default function FormField({ label, error, ref, ...props }) {
             : 'focus:border-teal-500'
         }`}
         {...props}
+        // name="email"
+        // onBlur={fn}
+        // onChange={fn}
+        // ref={from useRef}
       />
       {error && <p className="mt-1 text-sm text-red-600">{error}</p>}
     </div>
